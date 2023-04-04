@@ -10,8 +10,19 @@ module.exports = {
                 .setRequired(true)),
 	async execute(event) {
 		const prompt = event.options.getString('prompt');
-
+		const messageCode = "```";
+		var messageBody = "";
+		const messageAIHandler = "[AI Handler] ";
+		const enter = "\n";
 		const reply = await aiArtHandler.execute(prompt);
-		if(reply) event.reply("```[AI Handler] OK```"); else event.reply("```[AI Handler] KO```");
+		if(await reply){
+			messageBody += messageAIHandler+"OK"+enter;
+			messageBody += messageAIHandler+"Response: "+reply+enter;
+			event.reply(messageCode+messageBody+messageCode); 
+		} else{
+			messageBody += messageAIHandler+"KO"+enter;
+			messageBody += messageAIHandler+"Response: "+reply+enter;
+			event.reply(messageCode+messageBody+messageCode);
+		} 
 	},
 };

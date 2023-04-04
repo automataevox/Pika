@@ -1,11 +1,12 @@
 const fetch = require('node-fetch');
-API_URL = 'https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5' 
+const API_URL = 'https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5' 
 
 module.exports = {
     async execute(message){
             const payload = {
-                inputs: {
-                    text: message.content
+                image: {
+                    prompt: message,
+                    images: 1
                 }
             };
             // form the request headers with Hugging Face API key
@@ -28,6 +29,6 @@ module.exports = {
             } else if (data.hasOwnProperty('error')) { // error condition
                 botResponse = data.error;
             }
-            //const reply = botResponse;
+            return botResponse;
     }
 }

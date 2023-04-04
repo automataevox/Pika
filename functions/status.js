@@ -17,7 +17,7 @@ module.exports = {
         const statusArray= [
             {
                 type: ActivityType.Playing,
-                content: "FL Studio 20",
+                content: "FL Studio 21",
             },
             {
                 type: ActivityType.Listening,
@@ -25,11 +25,7 @@ module.exports = {
             },
             {
                 type: ActivityType.Watching,
-                content: "The Bubble",
-            },
-            {
-                type: ActivityType.Playing,
-                content: "Discord.js v14",
+                content: "Sword Art Online",
             }
         ];
         async function pickPresence(){
